@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>슈마메 맵 제목 제작기</title>
+    <script>
+        function generateRandomString() {
+            const sentenceCount = parseInt(document.getElementById('sentenceCountInput').value);
+            const sentenceLength = parseInt(document.getElementById('sentenceLengthInput').value);
+            
+            if (isNaN(sentenceCount) || sentenceCount <= 0 || isNaN(sentenceLength) || sentenceLength <= 0) {
+                alert('유효한 숫자를 입력해주세요.');
+                return;
+            }
+
+            const strings =  ['run ', 's ', 'speed ', 'the ', 'speedrun ', 'sec ', 'mario ', 'castle ', 'seconds ', 'of ', 'long ', 'sky ', 'snow ', 'in ', 'super ', 'p ', 'a ', 'vs ', 'ice ', 'cave ', 'lift ', 'desert ', 'switch ', 'thowmp ', 't ', 'on ', 'platforms ', 'night ', 'fire ', 'platforming ', 'jump ', 'smb ', 'music ', 'w ', 'adventure ', 'don ', 'puzzle ', 'is ', 'off ', 'quiz ', 'new ', 'forest', 'your ', 'world ', 'keep ', 'minigame ', 'game ', 'house ', 'to ', 'and ', ' ☆ ', ' ★ ', ' !! ', ' ! '];
+            let result = '';
+
+            for (let i = 0; i < sentenceCount; i++) {
+                let sentence = '';
+                for (let j = 0; j < sentenceLength; j++) {
+                    const randomIndex = Math.floor(Math.random() * strings.length);
+                    sentence += strings[randomIndex];
+                }
+                result += sentence + '<br>';
+            }
+
+            document.getElementById('output').innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>슈마메 맵 제목 제작기</h1>
+    <label for="sentenceCountInput">생성할 제목 개수:</label>
+    <input type="number" id="sentenceCountInput" min="1" step="1">
+    <br>
+    <label for="sentenceLengthInput">제목 길이(문자 갯수):</label>
+    <input type="number" id="sentenceLengthInput" min="1" step="1">
+    <br>
+    <button onclick="generateRandomString()">생성</button>
+    <div id="output"></div>
+</body>
+</html>
